@@ -1,0 +1,18 @@
+# before_script:
+#   - apt-get update -y
+#   - mkdir -p ~/.ssh
+#   - chmod 700 ~/.ssh
+#   - echo 'echo "$SSH_PASSPHRASE"' > ~/.ssh/.print_ssh_password
+#   - chmod 700 ~/.ssh/.print_ssh_password
+#   - chmod +x ~/.ssh/.print_ssh_password
+#   - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+#   - chmod 644 ~/.ssh/known_hosts
+#   - eval $(ssh-agent -s)
+#   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | DISPLAY=":0.0" SSH_ASKPASS=~/.ssh/.print_ssh_password setsid ssh-add - > /dev/null
+
+# deploy_staging:
+#   type: deploy
+#   environment:
+#     name: staging
+#   script:
+#     - ssh appkey03@sv5119.xserver.jp -p 10022 "cd /home/appkey03/appkey.biz/public_html/cicdtest/cicd && git pull origin master"
